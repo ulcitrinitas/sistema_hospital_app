@@ -3,7 +3,7 @@ class Leitos {
   String numero;
   String ala;
   String tipo;
-  String status;
+  StatusLeito status;
 
   Leitos({
     this.id,
@@ -14,7 +14,4 @@ class Leitos {
   });
 }
 
-enum StatusLeito {
-  ocupado,
-  disponivel
-}
+enum StatusLeito { ocupado, disponivel }
