@@ -1,11 +1,11 @@
-class Leitos {
+class Leito {
   int? id;
   String numero;
   String ala;
   String tipo;
   StatusLeito status;
 
-  Leitos({
+  Leito({
     this.id,
     required this.numero,
     required this.ala,

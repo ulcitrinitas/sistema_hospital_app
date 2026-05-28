@@ -1,10 +1,10 @@
-class Medicos {
+class Medico {
   int? id;
   String nome;
   String crm;
   String especialidade;
 
-  Medicos({
+  Medico({
     this.id,
     required this.nome,
     required this.crm,

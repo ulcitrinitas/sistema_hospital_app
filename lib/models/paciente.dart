@@ -1,11 +1,11 @@
-class Pacientes {
+class Paciente {
   int? id;
   String nome;
   String cpf;
   String dt_nascimento;
   String alergias;
 
-  Pacientes({
+  Paciente({
     required this.nome,
     this.id,
     required this.cpf,
