@@ -40,4 +40,28 @@ class PacienteController {
       );
     }
   }
+
+  static Future<void> atualizarPaciente(Paciente paciente) async {
+    final response = await http.put(
+      Uri.parse("${url}?id=${paciente.id}"),
+      headers: {"Content-Type": "application/json"},
+      body: json.encode(paciente.toJson()),
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception(
+        "Erro ao atualizar paciente: ${response.statusCode}\n${response.body}",
+      );
+    }
+  }
+
+  static Future<void> excluirPaciente(Paciente paciente) async {
+    final response = await http.delete(Uri.parse("${url}?id=${paciente.id}"));
+
+    if (response.statusCode != 200) {
+      throw Exception(
+        "Erro ao excluir paciente: ${response.statusCode}\n${response.body}",
+      );
+    }
+  }
 }
