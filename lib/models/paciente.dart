@@ -45,4 +45,8 @@ class Paciente extends Model {
       alergias: json["alergias"] ?? "",
     );
   }
+
+  factory Paciente.fromJson(Map<String, dynamic> json) {
+    return Paciente.fromJson(json);
+  }
 }

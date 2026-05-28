@@ -50,4 +50,8 @@ class Internacao extends Model {
       leito: leito.fromJson(json["leito"]),
     );
   }
+
+  factory Internacao.fromJson(Map<String, dynamic> json) {
+    return Internacao.fromJson(json);
+  }
 }

@@ -53,4 +53,8 @@ class Prontuario extends Model {
       internacao: internacao.fromJson(json["internacao"]),
     );
   }
+
+  factory Prontuario.fromJson(Map<String, dynamic> json) {
+    return Prontuario.fromJson(json);
+  }
 }

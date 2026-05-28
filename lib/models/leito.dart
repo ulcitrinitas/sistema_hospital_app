@@ -39,6 +39,10 @@ class Leito extends Model {
       status: json["status"] ?? "",
     );
   }
+
+  factory Leito.fromJson(Map<String, dynamic> json) {
+    return Leito.fromJson(json);
+  }
 }
 
 enum StatusLeito { ocupado, disponivel }

@@ -36,4 +36,8 @@ class Medico extends Model {
       especialidade: json["especialidade"] ?? "",
     );
   }
+
+  factory Medico.fromJson(Map<String, dynamic> json) {
+    return Medico.fromJson(json);
+  }
 }
