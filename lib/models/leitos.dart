@@ -13,3 +13,8 @@ class Leitos {
     required this.status,
   });
 }
+
+enum StatusLeito {
+  ocupado,
+  disponivel
+}
