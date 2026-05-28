@@ -26,4 +26,18 @@ class PacienteController {
     }
     throw Exception("Erro ao listar os pacientes: ${respose.statusCode}");
   }
+
+  static Future<void> inserirPaciente(Paciente paciente) async {
+    final response = await http.post(
+      Uri.parse(ApiController.baseUrl),
+      headers: {"Content-Type": "application/json"},
+      body: json.encode(paciente.toJson()),
+    );
+
+    if (response.statusCode != 201) {
+      throw Exception(
+        "Erro ao inserir paciente: ${response.statusCode}\n${response.body}",
+      );
+    }
+  }
 }
