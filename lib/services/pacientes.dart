@@ -5,7 +5,7 @@ import 'package:sis_hospital/models/paciente.dart';
 
 import 'package:http/http.dart' as http;
 
-class PacienteService {
+class PacientesService {
   static final String url = "${ApiService.baseUrl}/pacientes";
 
   static Future<List<Paciente>> listarPacientes() async {
