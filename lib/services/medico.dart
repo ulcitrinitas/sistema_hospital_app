@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class MedicoService {
   static final String url = "${ApiService.baseUrl}/medicos";
 
-  static Future<List<Medico>> listarPacientes() async {
+  static Future<List<Medico>> listarMedicos() async {
     final respose = await http.get(Uri.parse(url));
 
     if (respose.statusCode == 200) {
@@ -27,40 +27,40 @@ class MedicoService {
     throw Exception("Erro ao listar os pacientes: ${respose.statusCode}");
   }
 
-  static Future<void> inserirPaciente(Medico paciente) async {
+  static Future<void> inserirMedico(Medico medico) async {
     final response = await http.post(
       Uri.parse(url),
       headers: {"Content-Type": "application/json"},
-      body: json.encode(paciente.toJson()),
+      body: json.encode(medico.toJson()),
     );
 
     if (response.statusCode != 201) {
       throw Exception(
-        "Erro ao inserir paciente: ${response.statusCode}\n${response.body}",
+        "Erro ao inserir medico: ${response.statusCode}\n${response.body}",
       );
     }
   }
 
-  static Future<void> atualizarPaciente(Medico paciente) async {
+  static Future<void> atualizarMedico(Medico medico) async {
     final response = await http.put(
-      Uri.parse("${url}?id=${paciente.id}"),
+      Uri.parse("${url}?id=${medico.id}"),
       headers: {"Content-Type": "application/json"},
-      body: json.encode(paciente.toJson()),
+      body: json.encode(medico.toJson()),
     );
 
     if (response.statusCode != 200) {
       throw Exception(
-        "Erro ao atualizar paciente: ${response.statusCode}\n${response.body}",
+        "Erro ao atualizar medico: ${response.statusCode}\n${response.body}",
       );
     }
   }
 
-  static Future<void> excluirPaciente(Medico paciente) async {
-    final response = await http.delete(Uri.parse("${url}?id=${paciente.id}"));
+  static Future<void> excluirMedico(Medico medico) async {
+    final response = await http.delete(Uri.parse("${url}?id=${medico.id}"));
 
     if (response.statusCode != 200) {
       throw Exception(
-        "Erro ao excluir paciente: ${response.statusCode}\n${response.body}",
+        "Erro ao excluir medico: ${response.statusCode}\n${response.body}",
       );
     }
   }
