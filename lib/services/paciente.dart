@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:sis_hospital/controllers/api.dart';
-import 'package:sis_hospital/models/medico.dart';
+import 'package:sis_hospital/services/api.dart';
+import 'package:sis_hospital/models/paciente.dart';
 
 import 'package:http/http.dart' as http;
 
-class MedicoController {
-  static final String url = "${ApiController.baseUrl}/medicos";
+class PacienteService {
+  static final String url = "${ApiService.baseUrl}/pacientes";
 
-  static Future<List<Medico>> listarPacientes() async {
+  static Future<List<Paciente>> listarPacientes() async {
     final respose = await http.get(Uri.parse(url));
 
     if (respose.statusCode == 200) {
@@ -22,14 +22,14 @@ class MedicoController {
       }
 
       final List<dynamic> dados = json.decode(body);
-      return dados.map((json) => Medico.fromJson(json)).toList();
+      return dados.map((json) => Paciente.fromJson(json)).toList();
     }
     throw Exception("Erro ao listar os pacientes: ${respose.statusCode}");
   }
 
-  static Future<void> inserirPaciente(Medico paciente) async {
+  static Future<void> inserirPaciente(Paciente paciente) async {
     final response = await http.post(
-      Uri.parse(ApiController.baseUrl),
+      Uri.parse(url),
       headers: {"Content-Type": "application/json"},
       body: json.encode(paciente.toJson()),
     );
@@ -41,7 +41,7 @@ class MedicoController {
     }
   }
 
-  static Future<void> atualizarPaciente(Medico paciente) async {
+  static Future<void> atualizarPaciente(Paciente paciente) async {
     final response = await http.put(
       Uri.parse("${url}?id=${paciente.id}"),
       headers: {"Content-Type": "application/json"},
@@ -55,7 +55,7 @@ class MedicoController {
     }
   }
 
-  static Future<void> excluirPaciente(Medico paciente) async {
+  static Future<void> excluirPaciente(Paciente paciente) async {
     final response = await http.delete(Uri.parse("${url}?id=${paciente.id}"));
 
     if (response.statusCode != 200) {
