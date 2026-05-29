@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class LeitosService {
   static final String url = "${ApiService.baseUrl}/leitos";
 
-  static Future<List<Leito>> listarPacientes() async {
+  static Future<List<Leito>> listarMedicos() async {
     final respose = await http.get(Uri.parse(url));
 
     if (respose.statusCode == 200) {
@@ -27,40 +27,40 @@ class LeitosService {
     throw Exception("Erro ao listar os pacientes: ${respose.statusCode}");
   }
 
-  static Future<void> inserirPaciente(Leito paciente) async {
+  static Future<void> inseriMedico(Leito leito) async {
     final response = await http.post(
       Uri.parse(url),
       headers: {"Content-Type": "application/json"},
-      body: json.encode(paciente.toJson()),
+      body: json.encode(leito.toJson()),
     );
 
     if (response.statusCode != 201) {
       throw Exception(
-        "Erro ao inserir paciente: ${response.statusCode}\n${response.body}",
+        "Erro ao inserir leito: ${response.statusCode}\n${response.body}",
       );
     }
   }
 
-  static Future<void> atualizarPaciente(Leito paciente) async {
+  static Future<void> atualizaMedico(Leito leito) async {
     final response = await http.put(
-      Uri.parse("${url}?id=${paciente.id}"),
+      Uri.parse("${url}?id=${leito.id}"),
       headers: {"Content-Type": "application/json"},
-      body: json.encode(paciente.toJson()),
+      body: json.encode(leito.toJson()),
     );
 
     if (response.statusCode != 200) {
       throw Exception(
-        "Erro ao atualizar paciente: ${response.statusCode}\n${response.body}",
+        "Erro ao atualizar leito: ${response.statusCode}\n${response.body}",
       );
     }
   }
 
-  static Future<void> excluirPaciente(Leito paciente) async {
-    final response = await http.delete(Uri.parse("${url}?id=${paciente.id}"));
+  static Future<void> excluiMedico(Leito leito) async {
+    final response = await http.delete(Uri.parse("${url}?id=${leito.id}"));
 
     if (response.statusCode != 200) {
       throw Exception(
-        "Erro ao excluir paciente: ${response.statusCode}\n${response.body}",
+        "Erro ao excluir leito: ${response.statusCode}\n${response.body}",
       );
     }
   }
