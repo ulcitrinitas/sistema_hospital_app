@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sis_hospital/screens/home_sample.dart';
-import 'package:sis_hospital/screens/nav_sample.dart';
+import 'package:sis_hospital/screens/home.dart';
 
 void main() {
   runApp(MyApp());
