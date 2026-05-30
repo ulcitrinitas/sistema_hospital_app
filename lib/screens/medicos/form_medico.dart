@@ -113,12 +113,12 @@ class _FormMedicoState extends State<FormMedico> {
               TextFormField(
                 controller: _crm,
                 decoration: const InputDecoration(
-                  labelText: "CPF",
+                  labelText: "CRM",
                   prefixIcon: Icon(Icons.document_scanner),
                   border: OutlineInputBorder(),
                 ),
                 validator: (v) =>
-                    (v == null || v.trim().isEmpty) ? "Informe o cpf" : null,
+                    (v == null || v.trim().isEmpty) ? "Informe o crm" : null,
               ),
               const SizedBox(height: 16),
 
@@ -126,12 +126,12 @@ class _FormMedicoState extends State<FormMedico> {
               TextFormField(
                 controller: _especialidade,
                 decoration: const InputDecoration(
-                  labelText: "Alergias",
-                  prefixIcon: Icon(Icons.health_and_safety_sharp),
+                  labelText: "Especialidade",
+                  prefixIcon: Icon(Icons.health_and_safety_outlined),
                   border: OutlineInputBorder(),
                 ),
                 validator: (v) => (v == null || v.trim().isEmpty)
-                    ? "Informe as alergias"
+                    ? "Informe a especialidade do médico"
                     : null,
               ),
               const SizedBox(height: 16),
