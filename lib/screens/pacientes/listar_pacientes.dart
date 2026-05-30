@@ -121,7 +121,9 @@ class _ListarPacientesState extends State<ListarPacientes> {
                     p.nome,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Text("${p.nasc != null ? DateFormat('yyyy-MM-dd').format(p.nasc!) : ''}\n${p.alergias}"),
+                  subtitle: Text(
+                    "${p.nasc != null ? DateFormat('yyyy-MM-dd').format(p.nasc!) : ''}\n${p.alergias}",
+                  ),
                   isThreeLine: true,
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -139,6 +141,11 @@ class _ListarPacientesState extends State<ListarPacientes> {
                 );
               },
             ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _abrirForm(),
+        backgroundColor: Colors.blue,
+        child: Icon(Icons.add, color: Colors.white),
+      ),
     );
   }
 }
