@@ -38,6 +38,11 @@ class Medico extends Model {
   }
 
   factory Medico.fromJson(Map<String, dynamic> json) {
-    return Medico.fromJson(json);
+    return Medico(
+      id: int.tryParse((json["id"] ?? "").toString()),
+      nome: json["nome"] ?? "",
+      crm: json["crm"] ?? "",
+      especialidade: json["especialidade"] ?? "",
+    );
   }
 }
