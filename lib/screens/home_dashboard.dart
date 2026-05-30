@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sis_hospital/screens/pacientes/listar_pacientes.dart';
 
 class HomeDashboard extends StatelessWidget {
   HomeDashboard({super.key});
@@ -24,6 +25,27 @@ class HomeDashboard extends StatelessWidget {
             SizedBox(height: 16),
 
             // Gridcom os botões para acessar pacientes e médicos
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2, // 2 colunas
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                children: [
+                  _buildMenuCard(
+                    context,
+                    title: "Pacientes",
+                    icon: Icons.person,
+                    color: Colors.blue,
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ListarPacientes(),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
