@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sis_hospital/screens/pacientes/listar_pacientes.dart';
 
 class HomeDashboard extends StatelessWidget {
-  HomeDashboard({super.key});
+  const HomeDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
