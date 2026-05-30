@@ -27,47 +27,62 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: Icon(Icons.menu),
+            );
+          },
+        ),
+        title: const Text(""),
+      ),
       body: _abas[_currentIndex],
-      drawer: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
-            child: Text("Sistema do Hospital"),
-            decoration: BoxDecoration(color: Colors.blue),
-          ),
-          ListTile(
-            title: Text("Página Principal"),
-            selected: _currentIndex == 0,
-            onTap: () {
-              _tapIndex(0);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text("Leitos"),
-            selected: _currentIndex == 1,
-            onTap: () {
-              _tapIndex(1);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text("Internações"),
-            selected: _currentIndex == 2,
-            onTap: () {
-              _tapIndex(2);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text("Prontuários"),
-            selected: _currentIndex == 3,
-            onTap: () {
-              _tapIndex(3);
-              Navigator.pop(context);
-            },
-          ),
-        ],
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text("Sistema do Hospital"),
+            ),
+            ListTile(
+              title: Text("Página Principal"),
+              selected: _currentIndex == 0,
+              onTap: () {
+                _tapIndex(0);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text("Leitos"),
+              selected: _currentIndex == 1,
+              onTap: () {
+                _tapIndex(1);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text("Internações"),
+              selected: _currentIndex == 2,
+              onTap: () {
+                _tapIndex(2);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text("Prontuários"),
+              selected: _currentIndex == 3,
+              onTap: () {
+                _tapIndex(3);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

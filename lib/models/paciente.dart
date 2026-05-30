@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:sis_hospital/models/model.dart';
 
 class Paciente extends Model {
@@ -17,12 +18,14 @@ class Paciente extends Model {
 
   @override
   Map<String, dynamic> toJson() {
+    final dtNascimento = nasc != null ? DateFormat('yyyy-MM-dd').format(nasc!) : null;
+
     if (id != null) {
       return {
         "id": id,
         "nome": nome,
         "cpf": cpf,
-        "dt_nascimento": nasc,
+        "dt_nascimento": dtNascimento,
         "alergias": alergias,
       };
     }
@@ -30,7 +33,7 @@ class Paciente extends Model {
     return {
       "nome": nome,
       "cpf": cpf,
-      "dt_nascimento": nasc,
+      "dt_nascimento": dtNascimento,
       "alergias": alergias,
     };
   }
@@ -41,12 +44,30 @@ class Paciente extends Model {
       id: parseId(json["id"]),
       nome: json["nome"] ?? "",
       cpf: json["cpf"] ?? "",
-      nasc: parseDateTime(json["nasc"]),
+      nasc: parseDateTime((json["dt_nascimento"] ?? json["nasc"] ?? "").toString()),
       alergias: json["alergias"] ?? "",
     );
   }
 
   factory Paciente.fromJson(Map<String, dynamic> json) {
-    return Paciente.fromJson(json);
+    final id = int.tryParse((json["id"] ?? "").toString());
+    final nome = (json["nome"] ?? "").toString();
+    final cpf = (json["cpf"] ?? "").toString();
+    final nascRaw = (json["dt_nascimento"] ?? json["nasc"] ?? "").toString();
+    DateTime? nasc;
+    try {
+      nasc = DateFormat('yyyy-MM-dd').parseStrict(nascRaw);
+    } catch (_) {
+      nasc = DateTime.tryParse(nascRaw);
+    }
+    final alergias = (json["alergias"] ?? "").toString();
+
+    return Paciente(
+      id: id,
+      nome: nome,
+      cpf: cpf,
+      nasc: nasc,
+      alergias: alergias,
+    );
   }
 }

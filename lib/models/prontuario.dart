@@ -4,7 +4,7 @@ import 'package:sis_hospital/models/model.dart';
 
 class Prontuario extends Model {
   int? id;
-  DateTime? dt_registro;
+  DateTime? dtRegistro;
   String descricao;
   String tipo;
 
@@ -13,7 +13,7 @@ class Prontuario extends Model {
 
   Prontuario({
     this.id,
-    required this.dt_registro,
+    required this.dtRegistro,
     required this.descricao,
     required this.tipo,
     required this.medico,
@@ -25,7 +25,7 @@ class Prontuario extends Model {
     if (id != null) {
       return {
         "id": id,
-        "dt_registro": dt_registro,
+        "dtRegistro": dtRegistro,
         "descricao": descricao,
         "tipo": tipo,
         "medico": medico.toJson(),
@@ -34,7 +34,7 @@ class Prontuario extends Model {
     }
 
     return {
-      "dt_registro": dt_registro,
+      "dtRegistro": dtRegistro,
       "descricao": descricao,
       "tipo": tipo,
       "medico": medico.toJson(),
@@ -46,7 +46,7 @@ class Prontuario extends Model {
   Prontuario fromJson(Map<String, dynamic> json) {
     return Prontuario(
       id: parseId(json["id"]),
-      dt_registro: parseDateTime(json["dt_registro"]),
+      dtRegistro: parseDateTime(json["dtRegistro"]),
       descricao: json["descricao"] ?? "",
       tipo: json["tipo"] ?? "",
       medico: medico.fromJson(json["medico"]),

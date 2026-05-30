@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sis_hospital/models/paciente.dart';
 import 'package:sis_hospital/screens/pacientes/form_pacientes.dart';
 import 'package:sis_hospital/services/pacientes.dart';
@@ -120,7 +121,7 @@ class _ListarPacientesState extends State<ListarPacientes> {
                     p.nome,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Text("${p.nasc}\n${p.alergias}"),
+                  subtitle: Text("${p.nasc != null ? DateFormat('yyyy-MM-dd').format(p.nasc!) : ''}\n${p.alergias}"),
                   isThreeLine: true,
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,

@@ -43,7 +43,7 @@ class InternacoesService {
 
   static Future<void> atualizaInternacoes(Internacao internacao) async {
     final response = await http.put(
-      Uri.parse("${url}?id=${internacao.id}"),
+      Uri.parse("$url?id=${internacao.id}"),
       headers: {"Content-Type": "application/json"},
       body: json.encode(internacao.toJson()),
     );
@@ -56,7 +56,7 @@ class InternacoesService {
   }
 
   static Future<void> excluiInternacoes(Internacao internacao) async {
-    final response = await http.delete(Uri.parse("${url}?id=${internacao.id}"));
+    final response = await http.delete(Uri.parse("$url?id=${internacao.id}"));
 
     if (response.statusCode != 200) {
       throw Exception(

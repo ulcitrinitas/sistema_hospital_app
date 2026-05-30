@@ -24,7 +24,7 @@ class HomeDashboard extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            // Gridcom os botões para acessar pacientes e médicos
+            // Grid com os botões para acessar pacientes e médicos
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2, // 2 colunas
@@ -71,7 +71,7 @@ class HomeDashboard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 30,
-              backgroundColor: color.withOpacity(0.1),
+              backgroundColor: color.withValues(alpha: 0.1),
               child: Icon(icon, size: 36, color: color),
             ),
             const SizedBox(height: 12),

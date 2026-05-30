@@ -1,5 +1,5 @@
 class ApiService {
-  static const String _baseUrl = "localhost:3000";
+  static const String _baseUrl = "http://127.0.0.1:3000";
 
-  static get baseUrl => _baseUrl;
+  static String get baseUrl => _baseUrl;
 }

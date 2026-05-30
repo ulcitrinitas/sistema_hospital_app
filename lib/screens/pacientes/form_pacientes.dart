@@ -28,7 +28,9 @@ class _FormPacientesState extends State<FormPacientes> {
     if (widget.paciente != null) {
       _nomeCtrl.text = widget.paciente!.nome;
       _cpfCtrl.text = widget.paciente!.cpf;
-      _nascCtrl.text = widget.paciente!.nasc.toString();
+      _nascCtrl.text = widget.paciente!.nasc != null
+          ? DateFormat("yyyy-MM-dd").format(widget.paciente!.nasc!)
+          : "";
       _alergiasCtrl.text = widget.paciente!.alergias;
     }
   }
@@ -53,7 +55,7 @@ class _FormPacientesState extends State<FormPacientes> {
       id: widget.paciente?.id,
       nome: _nomeCtrl.text.trim(),
       cpf: _cpfCtrl.text.trim(),
-      nasc: widget.paciente!.parseDateTime(_nascCtrl.text.trim()),
+      nasc: DateFormat("yyyy-MM-dd").parseStrict(_nascCtrl.text.trim()),
       alergias: _alergiasCtrl.text.trim(),
     );
 
@@ -69,10 +71,11 @@ class _FormPacientesState extends State<FormPacientes> {
     } catch (e) {
       if (mounted) _mostrarMsg("Erro: $e", erro: true);
     } finally {
-      if (mounted)
+      if (mounted) {
         setState(() {
           _salvando = false;
         });
+      }
     }
   }
 
@@ -87,17 +90,17 @@ class _FormPacientesState extends State<FormPacientes> {
 
   Future<void> _selectDate(BuildContext ctx) async {
     // abre o seletor de data
-    final DateTime? dt_escolhida = await showDatePicker(
+    final DateTime? dtEscolhida = await showDatePicker(
       context: ctx,
       initialDate: DateTime.now(),
       firstDate: DateTime(1930),
       lastDate: DateTime(2030),
-      locale: const Locale("pt", "BR"),
+      //locale: const Locale("pt", "BR"),
     );
 
-    if (dt_escolhida != null) {
+    if (dtEscolhida != null) {
       setState(() {
-        _nascCtrl.text = DateFormat("dd/MM/yyyy").format(dt_escolhida);
+        _nascCtrl.text = DateFormat("yyyy-MM-dd").format(dtEscolhida);
       });
     }
   }

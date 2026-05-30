@@ -43,7 +43,7 @@ class MedicosService {
 
   static Future<void> atualizarMedico(Medico medico) async {
     final response = await http.put(
-      Uri.parse("${url}?id=${medico.id}"),
+      Uri.parse("$url?id=${medico.id}"),
       headers: {"Content-Type": "application/json"},
       body: json.encode(medico.toJson()),
     );
@@ -56,7 +56,7 @@ class MedicosService {
   }
 
   static Future<void> excluirMedico(Medico medico) async {
-    final response = await http.delete(Uri.parse("${url}?id=${medico.id}"));
+    final response = await http.delete(Uri.parse("$url?id=${medico.id}"));
 
     if (response.statusCode != 200) {
       throw Exception(

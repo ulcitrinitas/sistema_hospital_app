@@ -43,7 +43,7 @@ class ProntuarioService {
 
   static Future<void> atualizaMedico(Prontuario prontuario) async {
     final response = await http.put(
-      Uri.parse("${url}?id=${prontuario.id}"),
+      Uri.parse("$url?id=${prontuario.id}"),
       headers: {"Content-Type": "application/json"},
       body: json.encode(prontuario.toJson()),
     );
@@ -56,7 +56,7 @@ class ProntuarioService {
   }
 
   static Future<void> excluiMedico(Prontuario prontuario) async {
-    final response = await http.delete(Uri.parse("${url}?id=${prontuario.id}"));
+    final response = await http.delete(Uri.parse("$url?id=${prontuario.id}"));
 
     if (response.statusCode != 200) {
       throw Exception(

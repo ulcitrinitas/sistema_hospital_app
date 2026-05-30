@@ -6,7 +6,7 @@ import 'leito.dart';
 
 class Internacao extends Model {
   int? id;
-  DateTime? dt_entrada;
+  DateTime? dtEntrada;
 
   Paciente paciente;
   Medico medico;
@@ -14,7 +14,7 @@ class Internacao extends Model {
 
   Internacao({
     this.id,
-    required this.dt_entrada,
+    required this.dtEntrada,
     required this.paciente,
     required this.medico,
     required this.leito,
@@ -25,7 +25,7 @@ class Internacao extends Model {
     if (id != null) {
       return {
         "id": id,
-        "dt_entrada": dt_entrada,
+        "dtEntrada": dtEntrada,
         "paciente": paciente.toJson(),
         "medico": medico.toJson(),
         "leito": leito.toJson(),
@@ -33,7 +33,7 @@ class Internacao extends Model {
     }
 
     return {
-      "dt_entrada": dt_entrada,
+      "dtEntrada": dtEntrada,
       "paciente": paciente.toJson(),
       "medico": medico.toJson(),
       "leito": leito.toJson(),
@@ -44,7 +44,7 @@ class Internacao extends Model {
   Internacao fromJson(Map<String, dynamic> json) {
     return Internacao(
       id: parseId(json["id"]),
-      dt_entrada: parseDateTime(json["dt_entrada"]),
+      dtEntrada: parseDateTime(json["dtEntrada"]),
       paciente: paciente.fromJson(json["paciente"]),
       medico: medico.fromJson(json["medico"]),
       leito: leito.fromJson(json["leito"]),

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:sis_hospital/services/api.dart';
 import 'package:sis_hospital/models/paciente.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:sis_hospital/services/api.dart';
 
 class PacientesService {
   static final String url = "${ApiService.baseUrl}/pacientes";
@@ -43,7 +43,7 @@ class PacientesService {
 
   static Future<void> atualizarPaciente(Paciente paciente) async {
     final response = await http.put(
-      Uri.parse("${url}?id=${paciente.id}"),
+      Uri.parse("$url?id=${paciente.id}"),
       headers: {"Content-Type": "application/json"},
       body: json.encode(paciente.toJson()),
     );
@@ -56,7 +56,7 @@ class PacientesService {
   }
 
   static Future<void> excluirPaciente(Paciente paciente) async {
-    final response = await http.delete(Uri.parse("${url}?id=${paciente.id}"));
+    final response = await http.delete(Uri.parse("$url?id=${paciente.id}"));
 
     if (response.statusCode != 200) {
       throw Exception(
